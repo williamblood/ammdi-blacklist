@@ -101,7 +101,7 @@ exports.login = (request, response) => {
     });
 };
 
-// Retrieves logged in user details
+// Retrieves logged in and authenticated user details
 exports.getAuthUser = (request, response) => {
   let userData = {};
   db.doc(`/users/${request.user.handle}`)

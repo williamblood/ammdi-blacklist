@@ -6,7 +6,8 @@ let db = {
       handle: "user",
       imageUrl: "image/foo/bar",
       userId: "wlekrj13984PfiL2Ak23Hkd",
-      server: "Faerlina (PvP)"
+      server: "Faerlina (PvP)",
+      alignment: "True Neutral"
     }
   ],
   posts: [
@@ -41,7 +42,7 @@ const userDetails = {
     },
     {
       userHandle: "user",
-      postId: "cm1093478kddxAUA"
+      postId: "129038asaejwAWe"
     }
   ]
 };
