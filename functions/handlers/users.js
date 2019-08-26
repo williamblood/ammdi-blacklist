@@ -101,6 +101,33 @@ exports.login = (request, response) => {
     });
 };
 
+// Retrieves logged in user details
+exports.getAuthUser = (request, response) => {
+  let userData = {};
+  db.doc(`/users/${request.user.handle}`)
+    .get()
+    .then(doc => {
+      if (doc.exists) {
+        userData.credentials = doc.data();
+        return db
+          .collection("votes")
+          .where("userHandle", "==", request.user.handle)
+          .get();
+      }
+    })
+    .then(querySnapshot => {
+      userData.votes = [];
+      querySnapshot.forEach(doc => {
+        userData.votes.push(doc.data());
+      });
+      return response.json(userData);
+    })
+    .catch(err => {
+      console.error(err);
+      return response.status(500).json({ error: err.code });
+    });
+};
+
 // Busboy-dependent user upload route
 exports.uploadImage = (request, response) => {
   // Imported packages
@@ -115,9 +142,11 @@ exports.uploadImage = (request, response) => {
   let imageToBeUploaded = {};
 
   busboy.on("file", (fieldname, file, filename, encoding, mimetype) => {
-    console.log(fieldname);
-    console.log(filename);
-    console.log(mimetype);
+    if (mimetype !== "image/jpeg" && mimetype !== "image/png") {
+      return response.status(400).json({
+        error: "Incorrect file type. Please submit a JPEG or PNG file"
+      });
+    }
     // my.image.png = filename
     const imageExtension = filename.split(".")[filename.split(".").length - 1];
 
