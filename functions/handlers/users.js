@@ -101,7 +101,7 @@ exports.login = (request, response) => {
     });
 };
 
-// Busboy-dependent
+// Busboy-dependent user upload route
 exports.uploadImage = (request, response) => {
   // Imported packages
   const BusBoy = require("busboy");
@@ -127,7 +127,7 @@ exports.uploadImage = (request, response) => {
     )}.${imageExtension}`;
     const filepath = path.join(os.tmpdir(), imageFileName);
     imageToBeUploaded = { filepath, mimetype };
-    // Create a file using the File Path Library and Node functions
+    // Creates a file using the File Path Library
     file.pipe(fs.createWriteStream(filepath));
   });
   busboy.on("finish", () => {
