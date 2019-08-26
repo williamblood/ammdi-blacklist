@@ -15,6 +15,11 @@ const { signup, login, uploadImage, getAuthUser } = require("./handlers/users");
 // Posts route
 app.get("/posts", getAllPosts);
 app.post("/user-post", FBAuth, postOnce); // Create documents (as object)
+app.get("/user-post/:postId", getPost);
+// TODO functions: delete a post
+// TODO functions: upvote a post
+// TODO functions: un-vote a post
+// TODO functions: comment on post
 
 // user routes
 app.post("/signup", signup);
