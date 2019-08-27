@@ -28,7 +28,7 @@ const userDetails = {
       createdAt: "2019-08-19T11:18:12.814Z",
       email: "user@email.com",
       handle: "user",
-      imageUrl: "image/foo/bar",
+      imageUrl: "image/foo/baz",
       userId: "wlekrj13984PfiL2Ak23Hkd",
       server: "Faerlina (PvP)",
       alignment: "True Neutral"
