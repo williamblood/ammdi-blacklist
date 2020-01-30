@@ -1,3 +1,3 @@
 # AMMDI Blacklist (CANCELLED)
 
-This is a full stack social media web app using React, Redux, Express, and Material-UI.
+This was a full stack social media web app using React, Node, Express, Firebase
